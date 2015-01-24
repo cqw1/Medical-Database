@@ -1,0 +1,7 @@
+BEGIN { mode=0 }
+<!-- START DEV SCRIPTS -->{
+     mode=1     
+}
+<!-- END DEV SCRIPTS -->{
+     mode=1     
+}
