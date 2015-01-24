@@ -2,15 +2,9 @@
 console.log("hello world");
 
 
-var marioData = [
-	{name: "Mario", type: "Protagonist"},
-	{name: "Luigi", type: "Protagonist"},
-	{name: "Toad", type: "Protagonist"},
-	{name: "Wario", type: "Antagonist"}];
-
-
-var dbName = "mario";
-var marioSearchEngine = new fullproof.BooleanEngine();
+var dbName = "medical database";
+var searchEngine = new fullproof.BooleanEngine();
+var variableData = variableData;
 
 var index1 = {
 	name: "normalindex",
@@ -27,9 +21,15 @@ var index2 = {
 };
 
 function initializer(injector, callback) {
-	var synchro = fullproof.make_synchro_point(callback, marioData.length-1);
-	for (var i = 0; i < marioData.length; ++i) {
-		var text = marioData[i].name + " " + marioData[i].type;
+	var synchro = fullproof.make_synchro_point(callback, variableData.length-1);
+	for (var i = 0; i < variableData.length; ++i) {
+		var text = "";
+		text += variableData[i].getEquipment() + " ";
+		text += variableData[i].getModel() + " ";
+		text += variableData[i].getSerialNumber() + " ";
+		text += variableData[i].getManufacturer() + " ";
+		text += variableData[i].getDownloadLink();
+
 		injector.inject(text, i, synchro);
 	}
 }
@@ -37,7 +37,7 @@ function initializer(injector, callback) {
 function engineReady(state) {
 }
 
-marioSearchEngine.open([index1, index2], fullproof.make_callback(engineReady, true), fullproof.make_callback(engineReady, false));
+searchEngine.open([index1, index2], fullproof.make_callback(engineReady, true), fullproof.make_callback(engineReady, false));
 
 
 function search() {
@@ -45,26 +45,42 @@ function search() {
 	var value = document.getElementById("typehere").value;
 	console.log("document.getElementById(typehere): " + value);
 
-	marioSearchEngine.lookup(value, function(resultset) {
+	searchEngine.lookup(value, function(resultset) {
 		if (resultset && resultset.getSize()) {
 			var rsize = resultset.getSize();
-			result = "<h1>Found " + rsize + " character" + (rsize>1?"s":"") + " matching your request.";
-			result += "<table><tr><th>Name</th><th>Role</th></tr>";
+			result = "<br>Found " + rsize + " character" + (rsize>1?"s":"") + " matching your request.";
+
+			// Creating the table format in html.
+			result += '<br><table style="width:100%">';
+
+			// Creating the table headings.
+			result += "<tr>";
+			result += "<th>Equipment</th>";
+			result += "<th>Model</th>";
+			result += "<th>Serial Number</th>";
+			result += "<th>Manufacturer</th>";
+			result += "<th>Download Link</th>";
+			result += "</tr>";
+
+			// Inserting the search results into the table.
 			resultset.forEach(function (e) {
-				var c = marioData[e];
-				result += "<tr><td style='font-weight: bold;'>" + c.name + "</td>";
-				result += "<td>" + c.type + "</td></tr>";
+				var c = variableData[e];
+				result += "<tr>";
+				result += "<td>" + c.getEquipment() + "</td>";
+				result += "<td>" + c.getModel() + "</td>";
+				result += "<td>" + c.getSerialNumber() + "</td>";
+				result += "<td>" + c.getManufacturer() + "</td>";
+				result += "<td>" + c.getDownloadLink() + "</td>";
+				result += "</tr>";
 			});
+
 			result += "</table>";
+
+
 		} else {
 			result = "<h2>No result found</h2>";
 		}
 		document.getElementById("results").innerHTML = result;
-		//$("#results").html(result);
 	});
 	
 }
-
-//document.getElementById("search").click(search);
-//document.getElementById("typehere").change(search);
-
