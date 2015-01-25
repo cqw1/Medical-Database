@@ -1,8 +1,9 @@
-var Device = function(equipmentIn, modelIn, snIn, manufacturerIn, dlIn) {
+var Device = function(equipmentIn, modelIn, snIn, manufacturerIn, manualIn, dlIn) {
 	this.equipment = equipmentIn;
 	this.model = modelIn;
 	this.sn = snIn;
 	this.manufacturer = manufacturerIn;
+	this.manual = manualIn;
 	this.dl = dlIn;
 };
 
@@ -22,6 +23,10 @@ Device.prototype.getManufacturer = function () {
 	return this.manufacturer;
 }
 
+Device.prototype.getManualName = function() {
+	return this.manual;
+}
+
 Device.prototype.getDownloadLink = function () {
 	return this.dl;
 }
@@ -29,10 +34,9 @@ Device.prototype.getDownloadLink = function () {
 
 
 
-
-var A = new Device('Infant Incubator', 'Medikraft', '-', 'Marula.udyagindia.pvt.ltd', 'no link yet');
-var B = new Device("Infant Warmer", "ISIS mediprama", "40161274", "Incubator-surveillance-intelligence-systeme", "no link yet");
-var C = new Device("Suction Machine", "GIMA", "3021", "Gima Italy", "no link yet");
+var A = new Device('Infant Incubator', 'Medikraft', '-', 'Marula.udyagindia.pvt.ltd', "Cardio Care 2000 Service Manual", "http://s000.tinyupload.com/?file_id=89680257728123638230");
+var B = new Device("Infant Warmer", "ISIS mediprama", "40161274", "Incubator-surveillance-intelligence-systeme", "-", "-");
+var C = new Device("Suction Machine", "GIMA", "3021", "Gima Italy", "-", "-");
 
 
 

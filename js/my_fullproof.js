@@ -28,6 +28,7 @@ function initializer(injector, callback) {
 		text += variableData[i].getModel() + " ";
 		text += variableData[i].getSerialNumber() + " ";
 		text += variableData[i].getManufacturer() + " ";
+		text += variableData[i].getManualName() + " ";
 		text += variableData[i].getDownloadLink();
 
 		injector.inject(text, i, synchro);
@@ -48,7 +49,7 @@ function search() {
 	searchEngine.lookup(value, function(resultset) {
 		if (resultset && resultset.getSize()) {
 			var rsize = resultset.getSize();
-			result = "<br>Found " + rsize + " character" + (rsize>1?"s":"") + " matching your request.";
+			result = "<br>Found " + rsize + " result" + (rsize>1?"s":"") + " matching your request.";
 
 			// Creating the table format in html.
 			result += '<br><table style="width:100%">';
@@ -59,7 +60,7 @@ function search() {
 			result += "<th>Model</th>";
 			result += "<th>Serial Number</th>";
 			result += "<th>Manufacturer</th>";
-			result += "<th>Download Link</th>";
+			result += "<th>Download</th>";
 			result += "</tr>";
 
 			// Inserting the search results into the table.
@@ -70,7 +71,14 @@ function search() {
 				result += "<td>" + c.getModel() + "</td>";
 				result += "<td>" + c.getSerialNumber() + "</td>";
 				result += "<td>" + c.getManufacturer() + "</td>";
-				result += "<td>" + c.getDownloadLink() + "</td>";
+
+				if (c.getDownloadLink() == '-') {
+					result += "<td> - </td>";
+				}
+				else {
+					result += "<td>" + '<a href="' + c.getDownloadLink() + '">' + c.getManualName() +"</a>" + "</td>";
+				}
+
 				result += "</tr>";
 			});
 
