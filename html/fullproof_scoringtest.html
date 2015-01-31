@@ -1,0 +1,76 @@
+</html>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MAME Roms example</title>
+
+	<script type="text/javascript" src="../fullproof-20120919/js/fullproof-all.js"></script>
+	<script type="text/javascript" src="../js/fullproof_scoring.js"></script>
+	<script type="text/javascript" src="../js/manual_variables.js"></script>
+	<script type="text/javascript" src="../js/Device.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../css/stylesheet.css">
+
+</head>
+<body>
+<div class="grid">
+
+    <div style="display: none;" id="application">
+        Search:
+        <div>
+            <input type="text" id="typehere" class="typebox">
+            <button id="search">Search ROMS</button>
+            <button id="reload">Reload DB</button>
+        </div>
+        <div style="clear:both" id="results">
+        </div>
+    </div>
+</div>
+<div id="debug"></div>
+
+<script type="text/javascript">
+
+document.onreadystatechange = function() {
+	if (document.readyState == "complete") {
+		MameSearch.start(function(i) {
+			if (i) {
+				document.getElementById("application").show();
+			}
+		}, function(progress) {
+			//$("#progress").html(parseInt(progress*100));
+		});
+		var now = (function() {
+			var perf = window.performance || {};
+			var fn = perf.now || perf.mozNow || perf.webkitNow || perf.msNow || perf.oNow;
+			// fn.bind will be available in all the browsers that support the advanced window.performance... ;-)
+			return fn ? fn.bind(perf) : function() { return new Date().getTime(); };
+			})();
+		function search() {
+			var value = document.getElementById("#typehere").val();
+			
+			var startTime = now();
+			
+			MameSearch.lookup(value, function(result) {
+				var time = now() - startTime;
+				time = time.toFixed(3);
+				result = "<div>Request processed in " + time + " ms</div>" + result;
+				document.getElementById("results").html(result);
+			});
+		}
+		document.getElementById("search").click(search);
+		document.getElementById("typehere").change(search);
+		document.getElementById("reload").click(function() {
+			MameSearch.reloadDatabase(function() {
+				window.location.reload(true);
+			});	
+		});
+	}
+}
+
+
+</script>
+</body>
+</html>
