@@ -13,6 +13,7 @@ var index1 = {
 	initializer: initializer
 };
 
+//help get score in scoring engine
 var index2 = {
 	name: "stemmedindex",
 	analyzer: new fullproof.StandardAnalyzer(fullproof.normalizer.to_lowercase_nomark),
@@ -61,7 +62,7 @@ function search() {
 			result += "<tr>";
 			result += "<th>Equipment</th>"; // table heading 
 			result += "<th>Model</th>";
-			result += "<th>Serial Number</th>";
+			//result += "<th>Serial Number</th>";
 			result += "<th>Manufacturer</th>";
 			result += "<th>Download</th>";
 			result += "</tr>";
@@ -73,7 +74,7 @@ function search() {
 				result += "<tr>"; //tr is table row, defined in css 
 				result += "<td>" + c.getEquipment() + "</td>"; // cell in a table 
 				result += "<td>" + c.getModel() + "</td>";
-				result += "<td>" + c.getSerialNumber() + "</td>";
+				//result += "<td>" + c.getSerialNumber() + "</td>";
 				result += "<td>" + c.getManufacturer() + "</td>";
 
 				if (c.getDownloadLink() == '-') {
