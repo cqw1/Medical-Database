@@ -6,6 +6,11 @@ var dbName = "medical database";
 var searchEngine = new fullproof.BooleanEngine();
 var variableData = variableData;
 
+
+for (var i = 0; i < variableData.length; i++) {
+	console.log(variableData[i].getEquipment());
+}
+
 var index1 = {
 	name: "normalindex",
 	analyzer: new fullproof.StandardAnalyzer(fullproof.normalizer.to_lowercase_nomark),
@@ -68,8 +73,10 @@ function search() {
 
 			// Inserting the search results into the table.
 			resultset.forEach(function (e) {
-				console.log("e: " + e);
 				var c = variableData[e];
+
+				console.log("c.getManualName: " + c.getManualName());
+
 				result += "<tr>"; //tr is table row, defined in css 
 				result += "<td>" + c.getEquipment() + "</td>"; // cell in a table 
 				result += "<td>" + c.getModel() + "</td>";
@@ -96,4 +103,6 @@ function search() {
 	});
 	
 }
+
+
 
