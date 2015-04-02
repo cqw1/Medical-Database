@@ -6,11 +6,6 @@ var dbName = "medical database";
 var searchEngine = new fullproof.BooleanEngine();
 var variableData = variableData;
 
-
-for (var i = 0; i < variableData.length; i++) {
-	console.log(variableData[i].getEquipment());
-}
-
 var index1 = {
 	name: "normalindex",
 	analyzer: new fullproof.StandardAnalyzer(fullproof.normalizer.to_lowercase_nomark),

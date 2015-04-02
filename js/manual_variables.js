@@ -35,7 +35,7 @@ Device.prototype.getDownloadLink = function () {
 
 //something
 
-var A = new Device('Cardio Care 2000', 'Medikraft', '-', 'Marula.udyagindia.pvt.ltd', "Cardio Care 2000 Service Manual", "http://s000.tinyupload.com/?file_id=89680257728123638230");
+var A = new Device('Infant Incubator', 'Medikraft', '-', 'Marula.udyagindia.pvt.ltd', "Cardio Care 2000 Service Manual", "http://s000.tinyupload.com/?file_id=89680257728123638230");
 var B = new Device("Infant Warmer", "ISIS mediprama", "40161274", "Incubator-surveillance-intelligence-systeme", "-", "-");
 var C = new Device("Suction Machine", "GIMA", "3021", "Gima Italy", "-", "-");
 
