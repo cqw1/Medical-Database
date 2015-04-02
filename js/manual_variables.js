@@ -41,3 +41,7 @@ var C = new Device("Suction Machine", "GIMA", "3021", "Gima Italy", "-", "-");
 
 
 var variableData = [A, B, C];
+
+for (var i = 0; i < variableData.length; i++) {
+	console.log(variableData[i].getEquipment());
+}

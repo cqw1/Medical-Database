@@ -26,4 +26,5 @@ Device.prototype.getManufacturer = function () {
 Device.prototype.getDownloadLink = function () {
 	return this.dl;
 }
+
 */

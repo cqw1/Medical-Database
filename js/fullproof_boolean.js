@@ -69,8 +69,10 @@ function search() {
 
 			// Inserting the search results into the table.
 			resultset.forEach(function (e) {
-				console.log("e: " + e);
 				var c = variableData[e];
+
+				console.log("c.getManualName: " + c.getManualName());
+
 				result += "<tr>"; //tr is table row, defined in css 
 				result += "<td>" + c.getEquipment() + "</td>"; // cell in a table 
 				result += "<td>" + c.getModel() + "</td>";
@@ -97,4 +99,6 @@ function search() {
 	});
 	
 }
+
+
 
