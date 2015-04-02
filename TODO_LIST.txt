@@ -1,13 +1,14 @@
 Comments from Crannel:
-	Doesn't want the serial number.
-	Change "Model" to "Manufacturer" but keep both columns (both model and manufacturer I think)
-	Upload more PDF's (i.e. be able to have a "User Manual" and "Service Manual" column)
+			
 	Have a link so the user can upload more files
-	If we don't have the PDF for something, state "Currently unavailable." or something
+	
 	Display all entries on startup
 
 	
 	DONE - Be able to search for PDF title
-
+	DONE - Doesn't display the serial number.
+	DONE - Changed "Model" to "Manufacturer" but keep both columns, but be careful in future downloads 
+	DONE - Separated operation manual and service manual 
+	DONE - Display "Currently unavailable." when we don't have the pdf
 
 
