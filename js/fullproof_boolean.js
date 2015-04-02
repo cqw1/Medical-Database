@@ -49,7 +49,7 @@ function search() {
 	searchEngine.lookup(value, function(resultset) {
 		if (resultset && resultset.getSize()) {
 			var rsize = resultset.getSize();
-			result = "<br>Found " + rsize + " result" + (rsize>1?"s":"") + " matching your request.";
+			var result = "<br>Found " + rsize + " result" + (rsize>1?"s":"") + " matching your request.";
 
 			// Creating the table format in html.
 			result += '<br><table style="width:100%">';
@@ -65,6 +65,7 @@ function search() {
 
 			// Inserting the search results into the table.
 			resultset.forEach(function (e) {
+				console.log("e: " + e);
 				var c = variableData[e];
 				result += "<tr>";
 				result += "<td>" + c.getEquipment() + "</td>";

@@ -1,3 +1,4 @@
+/*
 var Device = function(equipmentIn, modelIn, snIn, manufacturerIn, dlIn) {
 	this.equipment = equipmentIn;
 	this.model = modelIn;
@@ -25,3 +26,4 @@ Device.prototype.getManufacturer = function () {
 Device.prototype.getDownloadLink = function () {
 	return this.dl;
 }
+*/
