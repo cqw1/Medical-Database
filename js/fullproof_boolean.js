@@ -31,7 +31,9 @@ function initializer(injector, callback) {
 		text += variableData[i].getSerialNumber() + " ";
 		text += variableData[i].getManufacturer() + " ";
 		text += variableData[i].getManualName() + " ";
-		text += variableData[i].getDownloadLink();
+		text += variableData[i].getDownloadLink() + " ";
+		text += variableData[i].getOperationManualName() + " ";
+		text += variableData[i].getOperationDownloadLink();
 
 		injector.inject(text, i, synchro);
 	}
@@ -64,7 +66,8 @@ function search() {
 			result += "<th>Model</th>";
 			//result += "<th>Serial Number</th>";
 			result += "<th>Manufacturer</th>";
-			result += "<th>Download</th>";
+			result += "<th>Download Service Manual</th>";
+			result += "<th>Download Operation Manual </th>";
 			result += "</tr>";
 
 			// Inserting the search results into the table.
@@ -80,10 +83,17 @@ function search() {
 				result += "<td>" + c.getManufacturer() + "</td>";
 
 				if (c.getDownloadLink() == '-') {
-					result += "<td> - </td>";
+					result += "<td> Currently Unavailable </td>";
 				}
 				else {
 					result += "<td>" + '<a href="' + c.getDownloadLink() + '">' + c.getManualName() +"</a>" + "</td>"; // define the info as a link, displayed as manual name 
+				}
+
+				if (c.getOperationDownloadLink() == '-') {
+					result += "<td> Currently Unavailable </td>";
+				}
+				else {
+					result += "<td>" + '<a href="' + c.getOperationDownloadLink() + '">' + c.getOperationManualName() +"</a>" + "</td>"; // define the info as a link, displayed as manual name 
 				}
 
 				result += "</tr>";
